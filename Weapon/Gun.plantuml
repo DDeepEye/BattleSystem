@@ -1,0 +1,49 @@
+@startuml(id=weapon)
+scale 1
+class MonoBehaviour
+
+Interface Weapon
+{
+    void SetOwner(GameObject owenr)
+    void SetModel(Mesh)
+    void SetEffect(Effect)
+    void SetIdentity(string json)
+    void ModelRender(bool render)
+}
+
+class Magazine
+class Gun
+{
+    + Vector3 _muzzleTip
+    + int _clipsize
+    + int _ammo
+    + float _rateOfFire
+    # Magazine _magazine
+
+    - Mesh _model
+    - Effect _effectFire
+
+    + bool PullTheTrigger()
+    + void Reload()    
+    # void Fire()
+}
+
+Gun --|> MonoBehaviour
+Gun ..|> Weapon
+Gun *- Magazine
+
+note bottom of Magazine : 탄창 처리 하는 클래스
+
+note left of Gun : 모든 총의 부모 클래스
+
+class Rifle
+{
+    + FiriingType _autoType
+    # void Fire()
+}
+
+Rifle --|> Gun
+Pistal --|> Gun
+class Pistal
+
+@enduml
