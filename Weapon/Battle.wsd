@@ -1,28 +1,24 @@
-@startuml(BattleSystem)
+@startuml(id=BattleSystem)
+
+!include PhysicalPhenomenon.plantuml!PhysicalPhenomenon
 !include Gun.plantuml!weapon
 
 class BattleSystem
 class Bullet
-class ActionDefinition
 class Effect
 class DataCenter
 class UI
 class PhysicalPhenomenon
 
-note top of ActionDefinition : 총알의 피격 여부와 효과 처리
-note right of Effect : 총알이 날라가는 비쥬얼적인 효과 처리
+note top of Effect : 총알이 날라가는 비쥬얼적인 효과 처리
 note bottom of DataCenter : 총알의 피격등등 필요한 데이타를 수집하는 객체
 note bottom of PhysicalPhenomenon : 물리현상에 의한 세계에서의 영향력을 관장한다\n이를테면 폭탄 폭발에 의한 주변 피해 현상이라던지
 
 Gun ..> BattleSystem : shoot
 BattleSystem ..> Bullet : Create
-Bullet ..> ActionDefinition : bullet shoot
+Bullet ..> PhysicalPhenomenon : bullet shoot
 Bullet ..> Effect : bullet effect
-ActionDefinition ..> DataCenter
-ActionDefinition ..> PhysicalPhenomenon
 Bullet ..> DataCenter
-
-
-UI ..> DataCenter : UI 는 피격 데이타등등을 가져온다.
+UI ..> DataCenter : GetData
 
 @enduml

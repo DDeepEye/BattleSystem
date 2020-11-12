@@ -1,0 +1,16 @@
+@startuml(id=PhysicalPhenomenon)
+
+interface Phenonmenon
+interface PhysicalApplier
+class RespwanManager
+class PhysicalTargetsContain
+class PhysicalPhenomenon
+{
+    
+}
+RespwanManager ..> PhysicalTargetsContain : 실제로 Scene 에서 보여지는 actor를 등록
+PhysicalPhenomenon ..> Phenonmenon
+PhysicalPhenomenon ..> PhysicalTargetsContain
+PhysicalPhenomenon ..> PhysicalApplier
+
+@end
